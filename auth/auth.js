@@ -13,7 +13,6 @@ const authHeader = authForm.querySelector('h2');
 const authButton = authForm.querySelector('button');
 const changeType = authForm.querySelector('a');
 const errorDisplay = authForm.querySelector('.error');
-const signUpFields = document.querySelector('#signup-fields');
 
 /* let state */
 let isSignIn = true;
