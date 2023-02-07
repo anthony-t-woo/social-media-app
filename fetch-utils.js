@@ -33,8 +33,4 @@ export async function checkAuth() {
     }
 }
 
-export async function createProfile(email, username, bio) {
-    console.log('profile');
-    await client.from('profiles').insert({ email, username, bio });
-}
 /* Data functions */

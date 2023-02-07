@@ -1,5 +1,5 @@
 // import services and utilities
-import { createProfile, getUser, signInUser, signUpUser } from '../fetch-utils.js';
+import { getUser, signInUser, signUpUser } from '../fetch-utils.js';
 
 // If on this /auth page but we have a user, it means
 // user probably navigated here by the url.
@@ -62,7 +62,6 @@ authForm.addEventListener('submit', async (e) => {
         errorDisplay.textContent = error.message;
         authButton.disabled = false;
     } else {
-        await createProfile(formData.get('email'), formData.get('username'), formData.get('bio'));
         // go back to wherever user came from...
         // check the query params for a redirect Url (page before auth redirect)
         const params = new URLSearchParams(location.search);
@@ -80,23 +79,8 @@ function displayAuth() {
         authButton.textContent = 'Sign In';
         changeType.textContent = 'Need to create an account?';
     } else {
-        displaySignUpAuth();
+        authHeader.textContent = 'Create a new account';
+        authButton.textContent = 'Sign Up';
+        changeType.textContent = 'Already have an account?';
     }
-}
-function displaySignUpAuth() {
-    authHeader.textContent = 'Create a new account';
-    authButton.textContent = 'Sign Up';
-    changeType.textContent = 'Already have an account?';
-    const userNameEl = document.createElement('input');
-    const bioEl = document.createElement('input');
-    const usernameLabel = document.createElement('label');
-    const bioLabel = document.createElement('label');
-    usernameLabel.textContent = 'Username';
-    bioLabel.textContent = 'Bio';
-    userNameEl.name = 'username';
-    bioEl.name = 'bio';
-    usernameLabel.append(userNameEl);
-    signUpFields.append(usernameLabel);
-    bioLabel.append(bioEl);
-    signUpFields.append(bioLabel);
 }
