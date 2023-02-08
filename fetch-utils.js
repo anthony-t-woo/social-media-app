@@ -38,3 +38,8 @@ export async function createProfile(email, username, bio) {
     await client.from('profiles').insert({ email, username, bio });
 }
 /* Data functions */
+
+export async function getProfiles() {
+    const { data, error } = await client.from('profiles').select('*');
+    return data;
+}

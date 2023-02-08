@@ -1,26 +1,49 @@
-## The Golden Rule:
+# Slices
 
-🦸 🦸‍♂️ `Stop starting and start finishing.` 🏁
+## Create New Profile
 
-If you work on more than one feature at a time, you are guaranteed to multiply your bugs and your anxiety.
+-   From the auth page, user should be able to create a new profile.
+    -   Dynamically render the auth page for sign up - adding additional form fields for profile create.
+-   On form submit, create user on user table and create new profile in profiles table.
+    -   Call signUp function with email and password
+    -   Call create profile function with email, username, bio ...
 
-## Making a plan
+## View Profiles
 
-1. **Make a drawing of your app. Simple "wireframes"**
-1. **Once you have a drawing, name the HTML elements you'll need to realize your vision**
-1. **For each HTML element ask: Why do I need this?**
-1. **Once we know _why_ we need each element, think about how to implement the "Why" as a "How"**
-1. **Find all the 'events' (user clicks, form submit, on load etc) in your app. Ask one by one, "What happens when" for each of these events. Does any state change?**
-1. **Think about how to validate each of your features according to a Definition of Done**
-1. **Consider what features _depend_ on what other features. Use this dependency logic to figure out what order to complete tasks.**
+-   On load, user should be able to see a list of profiles (displayed as profile cards on the page)
+    -   Fetch profiles data and assign to state (array of objects)
+    -   Loop through data, render, append to DOM
 
-Additional considerations:
+## View Detail of Profile
 
--   Ask: which of your HTML elements need to be hard coded, and which need to be dynamically generated?
--   Consider your data model.
-    -   What kinds of objects (i.e., Dogs, Friends, Todos, etc) will you need?
-    -   What are the key/value pairs?
-    -   What arrays might you need?
-    -   What needs to live in a persistence layer?
--   Is there some state we need to initialize?
--   Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be reused?)
+-   On click of profile card from ./profiles, user should be able to see a detail view of the profile selected.
+    -   Fetch profile data and assign to state (profile object).
+    -   Render div and append to DOM
+
+## Upvote/Downvote
+
+-   On click of up or down, user should be able to add or subtract from profile karma
+    -   Update table row by ID,up/down
+
+# HTML
+
+## ./auth
+
+-   div to append additional input fields when user clicks on create account link
+-   page dynamically renders depending on signup/signin
+
+## ./
+
+-   empty profiles-container div to inject profile data (profile-card).
+
+## ./profile/?id=user_id
+
+-   empty div to inject profile data to
+    -   dynamically rendered div with data fetched based on id
+        -   h2 username
+        -   img avatar
+        -   p email
+        -   p bio
+        -   p karma
+        -   upvote button
+        -   downvote button
