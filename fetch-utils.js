@@ -28,8 +28,8 @@ export async function signOutUser() {
 }
 
 export async function checkAuth() {
-    if (getUser()) {
-        location.replace('../');
+    if (!getUser()) {
+        location.replace('./auth');
     }
 }
 
@@ -42,4 +42,9 @@ export async function createProfile(email, username, bio) {
 export async function getProfiles() {
     const { data, error } = await client.from('profiles').select('*');
     return data;
+}
+
+export async function getProfileById(id) {
+    const { data, error } = await client.from('profiles').select('*').eq('user_id', id);
+    return data[0];
 }

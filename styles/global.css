@@ -77,4 +77,11 @@ main {
 }
 .profile-card {
     width: 300px;
+    border: 2px solid blueviolet;
+    margin: 5px;
+    padding: 5px;
+}
+
+a {
+    text-decoration: none;
 }
