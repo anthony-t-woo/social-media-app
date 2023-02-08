@@ -48,3 +48,7 @@ export async function getProfileById(id) {
     const { data, error } = await client.from('profiles').select('*').eq('user_id', id);
     return data[0];
 }
+
+export async function updateKarma(id, karma) {
+    await client.from('profiles').update([{ karma }]).eq('user_id', id);
+}
